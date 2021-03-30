@@ -1,50 +1,69 @@
-# generator-node-webkit
+# [NWJS](https://github.com/nwjs/nw.js) generator [![Build Status](https://img.shields.io/travis/Dica-Developer/generator-node-webkit/sparrow.svg?style=flat-square)](https://travis-ci.org/Dica-Developer/generator-node-webkit)
 
-[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/Dica-Developer/generator-node-webkit?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-[![Build Status](https://secure.travis-ci.org/Dica-Developer/generator-node-webkit.png?branch=master)](https://travis-ci.org/Dica-Developer/generator-node-webkit)
-[![Dependency Status](https://david-dm.org/Dica-Developer/generator-node-webkit.png)](https://david-dm.org/Dica-Developer/generator-node-webkit)
-[![devDependency Status](https://david-dm.org/Dica-Developer/generator-node-webkit/dev-status.png)](https://david-dm.org/Dica-Developer/generator-node-webkit#info=devDependencies)
-[![NPM version](https://badge.fury.io/js/generator-node-webkit.png)](http://badge.fury.io/js/generator-node-webkit)
-[![Coverage Status](https://img.shields.io/coveralls/Dica-Developer/generator-node-webkit.svg)](https://coveralls.io/r/Dica-Developer/generator-node-webkit)
-[![downloads per month](http://img.shields.io/npm/dm/generator-node-webkit.svg)](https://www.npmjs.org/package/generator-node-webkit)
-[![current version](http://img.shields.io/npm/v/generator-node-webkit.svg)](https://www.npmjs.org/package/generator-node-webkit)
-[![license](http://img.shields.io/npm/l/generator-node-webkit.svg)](http://en.wikipedia.org/wiki/MIT_License)
-[![open issues](http://img.shields.io/github/issues/Dica-Developer/generator-node-webkit.svg)](https://github.com/Dica-Developer/generator-node-webkit/issues)
-[![Stories in Ready](https://badge.waffle.io/dica-developer/generator-node-webkit.png?label=ready&title=Ready)](https://waffle.io/dica-developer/generator-node-webkit)
+> Generator to easily maintain cross platform apps. The generator helps to setup a new project and package the app for different OS's and [nwjs](https://github.com/nwjs/nw.js) versions.
 
-Required software:
+## Usage
 
-[Node.js](http://nodejs.org/ "nodejs")
-
-[Yeoman](http://yeoman.io/ "Yeoman")
- 
-
-To install generator-node-webkit from npm, run:
+Install ```generator-node-webkit```:
 
 ```
-$ npm install -g generator-node-webkit
+npm install -g generator-node-webkit
 ```
 
-Finally, initiate the generator:
+Make a new directory, and cd into it:
 
 ```
-$ yo node-webkit
+mkdir my-new-project && cd $_
 ```
 
+Run ```yo node-webkit```:
 
-For further informations, please visit our [Wiki](https://github.com/Dica-Developer/generator-node-webkit/wiki "Wiki")
+```
+yo node-webkit
+```
 
-## We would like to thank
+## Generators
 
-[Jim Buck](https://github.com/JimmyBoh "JimmyBoh")
+Available generators:
 
-[Andy Matthews](https://github.com/commadelimited "commadelimited")
+* App
+    * [node-webkit](#app) (aka node-webkit:app)
+* Download
+    * [node-webkit:download](#download)
+* Examples
+    * [node-webkit:examples](#examples)
+    
+### App
 
-[Zack Lalanne](https://github.com/zlalanne "zlalanne")
+Sets up a new nwjs app, generating all the boilerplate you need to get started.
 
-for helping to make it easy to develop cross platform apps.
+Example:
 
+```
+yo node-webkit
+```
 
-## License
+### Download
 
-[MIT License](http://en.wikipedia.org/wiki/MIT_License)
+Downloads a specific nwjs version for an OS of your choice.
+Generates needed grunt task to build the final app. You can call this generator at any time you want to have a new version nwjs. The sub generator pay attention to already downloaded nwjs source files and will skip the download.
+
+Example: 
+
+```
+yo node-webkit:download
+[?] Please specify which version of node-webkit you want to download: (v0.12.0)
+[?] Which platform you develop on? (Use arrow keys)
+    ❯ MacOS32
+      MacOS64
+      Linux32
+      Linux64
+      Windows32
+```
+Produces:
+```
+├── nwjs
+│   ├── MacOS32_v0.12.0     - The nwjs sources of this combination goes here
+├── grunt-tasks             - All costum grunt tasks will go in here
+│   ├── MacOS32_v0.12.0.js  - This is the main grunt task to build a dist for this version
+```

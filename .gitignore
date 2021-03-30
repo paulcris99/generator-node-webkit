@@ -1,6 +1,7 @@
 .idea
 node_modules/
-temp/
 .DS_Store
 dist/
-test/tmp
+test/tmp/
+test/fixtures/
+test/coverage/
